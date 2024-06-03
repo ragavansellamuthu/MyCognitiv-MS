@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { CandidateFormComponent } from './components/candidate/candidate-form/candidate-form.component';
 import { CandidatePageComponent } from './components/candidate/candidate-page/candidate-page.component';
 import { CandidateDetailsComponent } from './components/candidate/candidate-details/candidate-details.component';
+import { ChapterComponent } from './components/chapter/chapter.component';
 
 
 
@@ -30,6 +31,7 @@ import { CandidateDetailsComponent } from './components/candidate/candidate-deta
     CandidateFormComponent,
     CandidatePageComponent,
     CandidateDetailsComponent,
+    ChapterComponent,
 
 
   ],
