@@ -1,7 +1,14 @@
 /mycognitiv-angular/.angular
 /mycognitiv-angular/node_modules
+
 mycognitiv-microservices/candidate-service/.classpath
 mycognitiv-microservices/candidate-service/.factorypath
 mycognitiv-microservices/candidate-service/.project
 /mycognitiv-microservices/candidate-service/.settings
 /mycognitiv-microservices/candidate-service/target
+
+mycognitiv-microservices/professor-service/.classpath
+mycognitiv-microservices/professor-service/.factorypath
+mycognitiv-microservices/professor-service/.project
+/mycognitiv-microservices/professor-service/.settings
+/mycognitiv-microservices/professor-service/target
