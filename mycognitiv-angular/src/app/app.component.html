@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+
+    <button mat-icon-button class="example-icon" (click)="drawer.toggle()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>MyCognitiv</span>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button class="example-icon" [mat-menu-trigger-for]="headerMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <mat-menu #headerMenu="matMenu" xPosition="before">
+        <button mat-menu-item> <mat-icon>manage_accounts</mat-icon> My Account</button>
+        <button mat-menu-item> <mat-icon>logout</mat-icon> Exit</button>
+    </mat-menu>
+
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+
+  <mat-drawer #drawer mode="side" >
+  
+      <mat-nav-list>
+
+        <mat-list-item>
+          <button mat-button (click)="drawer.close()">
+            <mat-icon>  engineering  </mat-icon>
+            <a mat-list-item routerLink="/candidates">  Candidates  </a>
+          </button>
+        </mat-list-item>
+
+      </mat-nav-list>
+    
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>
