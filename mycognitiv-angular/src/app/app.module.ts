@@ -13,13 +13,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
+
 import { CandidateFormComponent } from './components/candidate/candidate-form/candidate-form.component';
 import { CandidatePageComponent } from './components/candidate/candidate-page/candidate-page.component';
 import { CandidateDetailsComponent } from './components/candidate/candidate-details/candidate-details.component';
-import { ChapterComponent } from './components/chapter/chapter.component';
 
-
-
+import { ChapterFormComponent } from './components/chapter/chapter-form/chapter-form.component';
+import { ChapterDetailsComponent } from './components/chapter/chapter-details/chapter-details.component';
+import { ChapterPageComponent } from './components/chapter/chapter-page/chapter-page.component';
+import { CandidateComponent } from './model/candidate/candidate.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,16 @@ import { ChapterComponent } from './components/chapter/chapter.component';
     CandidateFormComponent,
     CandidatePageComponent,
     CandidateDetailsComponent,
-    ChapterComponent,
-
+  
+    // Chapter :
+    ChapterFormComponent,
+    ChapterDetailsComponent,
+    ChapterPageComponent,
+    CandidateComponent,
 
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
 
@@ -50,7 +57,6 @@ import { ChapterComponent } from './components/chapter/chapter.component';
     MatSidenavModule,
     MatListModule
     
-
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/mycognitiv'}

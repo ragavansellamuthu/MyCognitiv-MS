@@ -31,10 +31,11 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/candidate")
 @RequiredArgsConstructor
-
 public class CandidateController {
 
 	private final CandidateService candidateService;
+	
+	//private final PasswordEncoder passwordEncoder ;
 
 	@PostMapping
 	public ResponseEntity<?> createCandidate(@Validated(ValidCreation.class) @RequestBody CandidateModel model,
@@ -42,6 +43,8 @@ public class CandidateController {
 		if (result.hasErrors()) {
 			return CustomUtils.badRequest(result);
 		}
+		
+		//model.setPassword(passwordEncoder.encode(model.getPassword()));
 		return ResponseEntity.ok(candidateService.createCandidate(model));
 	}
 
@@ -64,6 +67,7 @@ public class CandidateController {
 			}
 			return CustomUtils.badRequest(result);
 		}
+		//model.setPassword(passwordEncoder.encode(model.getPassword()));
 		return ResponseEntity.ok(candidateService.updateCandidate(model));
 	}
 
