@@ -13,7 +13,7 @@ public interface BatchRepository extends JpaRepository<BatchEntity, Long> {
 
 	BatchEntity findAllByBatchNameAndIsDeletedFalse(String email);
 
-	BatchEntity findByBatchIdAndIsDeletedFalse(long BatchId);
+	BatchEntity findByIdAndIsDeletedFalse(long BatchId);
 
 	List<BatchEntity> findAllByIsDeletedFalse(Sort sort);
 
