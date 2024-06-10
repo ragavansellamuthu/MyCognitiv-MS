@@ -9,7 +9,7 @@ public class MaximumCapacityValidator implements ConstraintValidator<MaximumCapa
 
 	@Override
 	public boolean isValid(Integer value, ConstraintValidatorContext context) {
-		return value>=25;
+		return value<=25;
 	}
 
 }

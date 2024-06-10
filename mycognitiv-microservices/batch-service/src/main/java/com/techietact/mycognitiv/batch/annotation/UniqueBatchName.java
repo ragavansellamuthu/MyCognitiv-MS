@@ -8,7 +8,7 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import com.techietact.mycognitiv.batch.validator.MinimumCapacityValidator;
+import com.techietact.mycognitiv.batch.validator.DuplicateBatchNameValidator;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -16,10 +16,10 @@ import jakarta.validation.Payload;
 @Documented
 @Retention(RUNTIME)
 @Target({ FIELD, PARAMETER })
-@Constraint(validatedBy = MinimumCapacityValidator.class)
-public @interface MinimumCapacity {
+@Constraint(validatedBy = DuplicateBatchNameValidator.class)
+public @interface UniqueBatchName {
 
-	String message() default "Capacity cannot be reduced below the current number of candidates in the batch";
+	String message() default "Duplicate Batch name";
 
     Class<?>[] groups() default {};
 

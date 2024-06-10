@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techietact.mycognitiv.batch.model.BatchModel;
+import com.techietact.mycognitiv.batch.model.BatchModel.BatchCreation;
+import com.techietact.mycognitiv.batch.model.BatchModel.BatchUpdation;
 import com.techietact.mycognitiv.batch.service.BatchService;
 import com.techietact.mycognitiv.batch.util.CustomUtils;
 
-import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 
 @CrossOrigin(origins = "*")
@@ -33,7 +35,8 @@ public class BatchController {
 	private final BatchService batchService;
 
 	@PostMapping
-	public ResponseEntity<?> createBatch(@Valid @RequestBody BatchModel model, BindingResult result) {
+	public ResponseEntity<?> createBatch(@Validated(BatchCreation.class) @RequestBody BatchModel model,
+			BindingResult result) {
 		if (result.hasErrors()) {
 			return CustomUtils.badRequest(result);
 		}
@@ -41,20 +44,21 @@ public class BatchController {
 	}
 
 	@GetMapping("/{batchId}")
-	public ResponseEntity<BatchModel> viewBatch(@PathVariable("batchId") long batchId) {
+	public ResponseEntity<BatchModel> viewBatch(@Positive @PathVariable("batchId") long batchId) {
 		return ResponseEntity.ok(batchService.viewBatch(batchId));
 	}
 
 	@PutMapping
-	public ResponseEntity<?> updateBatch(@Valid @RequestBody BatchModel model, BindingResult result) {
+	public ResponseEntity<?> updateBatch(@Validated(BatchUpdation.class) @RequestBody BatchModel model,
+			BindingResult result) {
 		if (result.hasErrors()) {
-			if (model != null) {
-				long batchId = model.getBatchId();
-				String batchName = model.getBatchName();
-				if (batchId > 0 && StringUtils.hasText(batchName)
-						&& batchService.isDuplicateBatchName(batchId, batchName)) {
-					result.rejectValue("batchName", batchName, "Batch Name already Exists");
-				}
+			long batchId = model.getId();
+			int newCapacity = model.getMaximumCapacity();
+			String batchName = model.getBatchName();
+			if (batchService.isDuplicateBatchName(batchId, batchName)) {
+				result.rejectValue("batchName", "BatchModel.batchName.invalid", "Batch Name already Exists");
+			} else if (batchService.isInvalidCapacity(batchId, newCapacity)) {
+				result.rejectValue("maximumCapacity", "BatchModel.maximumCapacity.invalid","Capacity cannont be less than the existing batch size");
 			}
 			return CustomUtils.badRequest(result);
 		}
@@ -62,8 +66,8 @@ public class BatchController {
 	}
 
 	@DeleteMapping("/{batchId}/{deletedBy}")
-	public ResponseEntity<Boolean> deleteBatch(@PathVariable("batchId") long batchId,
-			@PathVariable("deletedBy") long deletedBy) {
+	public ResponseEntity<Boolean> deleteBatch(@Positive @PathVariable("batchId") long batchId,
+			@Positive @PathVariable("deletedBy") long deletedBy) {
 		return ResponseEntity.ok(batchService.deleteBatch(batchId, deletedBy));
 	}
 
@@ -83,8 +87,8 @@ public class BatchController {
 				.ok(batchService.paginateBatches(pageIndex, pageSize, attributeName, sortOrder, searchText));
 	}
 
-	@GetMapping("check-duplicate-batch-name/{batchName}")
-	public ResponseEntity<Boolean> isDuplicateEmail(@PathVariable("batchName") String batchName) {
+	@GetMapping("/check-duplicate-batch-name/{batchName}")
+	public ResponseEntity<Boolean> isDuplicateBatchName(@PathVariable("batchName") String batchName) {
 		return ResponseEntity.ok(batchService.isDuplicateBatchName(batchName));
 	}
 
