@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techietact.mycognitiv.batch.model.BatchModel;
 import com.techietact.mycognitiv.batch.model.BatchModel.BatchCreation;
 import com.techietact.mycognitiv.batch.model.BatchModel.BatchUpdation;
+import com.techietact.mycognitiv.batch.request.BatchModificationRequest;
 import com.techietact.mycognitiv.batch.service.BatchService;
 import com.techietact.mycognitiv.batch.util.CustomUtils;
 
@@ -90,6 +92,16 @@ public class BatchController {
 	@GetMapping("/check-duplicate-batch-name/{batchName}")
 	public ResponseEntity<Boolean> isDuplicateBatchName(@PathVariable("batchName") String batchName) {
 		return ResponseEntity.ok(batchService.isDuplicateBatchName(batchName));
+	}
+	
+	@PatchMapping("/increase-batch-size")
+	public ResponseEntity<Boolean> increaseBatchSize(@RequestBody BatchModificationRequest request) {
+		return ResponseEntity.ok(batchService.increaseBatchSize(request));
+	}
+	
+	@PatchMapping("/decrease-batch-size")
+	public ResponseEntity<Boolean> decreaseBatchSize(@RequestBody BatchModificationRequest request) {
+		return ResponseEntity.ok(batchService.decreaseBatchSize(request));
 	}
 
 }

@@ -1,10 +1,10 @@
 package com.techietact.mycognitiv.batch.exception;
 
-public class InsufficientCapacityException extends RuntimeException {
+public class UnsupportedBatchOperationException extends RuntimeException {
 	
 	private static final long serialVersionUID = 3350571672435696997L;
 
-	public InsufficientCapacityException(String message) {
+	public UnsupportedBatchOperationException(String message) {
 		super(message);
 	}
 	
