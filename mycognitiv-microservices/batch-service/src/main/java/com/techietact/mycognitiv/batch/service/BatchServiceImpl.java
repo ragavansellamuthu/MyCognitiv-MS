@@ -11,10 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.techietact.mycognitiv.batch.entity.BatchEntity;
+import com.techietact.mycognitiv.batch.exception.UnsupportedBatchOperationException;
 import com.techietact.mycognitiv.batch.exception.InvalidPropertyException;
-import com.techietact.mycognitiv.batch.exception.InsufficientCapacityException;
 import com.techietact.mycognitiv.batch.model.BatchModel;
 import com.techietact.mycognitiv.batch.repository.BatchRepository;
+import com.techietact.mycognitiv.batch.request.BatchModificationRequest;
 import com.techietact.mycognitiv.batch.util.CustomUtils;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -107,30 +108,33 @@ public class BatchServiceImpl implements BatchService {
 	}
 	
 	@Override
-	public Boolean increaseBatchSize(long batchId , int count) {
-		BatchEntity entity = getBatch(batchId);
+	public Boolean increaseBatchSize(BatchModificationRequest request) {
+		BatchEntity entity = getBatch(request.getBatchId());
 		if(entity.isVacant()) {
-			int newSize = entity.getCurrentSize() + count ;
+			int newSize = entity.getCurrentSize() + request.getCount() ;
 			if(entity.getMaximumCapacity()>=newSize) {
 				entity.setCurrentSize(newSize);
+				entity.setModifiedBy(request.getModifiedBy());
 				batchRepository.save(entity);
 				return true;
 			}
 		}
-		throw new InsufficientCapacityException("Insufficient Seats");
+		throw new UnsupportedBatchOperationException("Insufficient Seats : Only " + (entity.getMaximumCapacity() - entity.getCurrentSize()) + " seats are available");
 	}
 
 	@Override
-	public Boolean decreaseBatchSize(long batchId , int count) {
-		BatchEntity entity = getBatch(batchId);
+	public Boolean decreaseBatchSize(BatchModificationRequest request) {
+		BatchEntity entity = getBatch(request.getBatchId());
 	    int currentSize = entity.getCurrentSize();
+	    int count = request.getCount();
 		if(currentSize>=count) {
 			int newSize = currentSize - count ;
 			entity.setCurrentSize(newSize);
+			entity.setModifiedBy(request.getModifiedBy());
 			batchRepository.save(entity);
 			return true;
 		}
-		throw new InsufficientCapacityException("Insufficient Seats");
+		throw new UnsupportedBatchOperationException("Batch size is lesser than the delete count");
 	}
 
 
