@@ -18,15 +18,15 @@ public interface CandidateService {
 	
 	CandidateModel viewCandidate (long candidateId);
 	
-	@CacheEvict(value = "Candidates", allEntries = true)
+	//@CacheEvict(value = "Candidates", allEntries = true)
 	CandidateModel updateCandidate (CandidateModel model);
 	
-	@CacheEvict(value = "Candidates", allEntries = true)
+	//@CacheEvict(value = "Candidates", allEntries = true)
 	Boolean deleteCandidate (long candidateId , long deletedBy);
 	
 	Page<CandidateModel> paginateCandidates (int pageIndex , int pageSize , String attributeName , String sortOrder , String searchText);
 
-	@Cacheable(value = "Candidates")
+	//@Cacheable(value = "Candidates")
 	List<CandidateModel> listAllCandidates();
 
 		
