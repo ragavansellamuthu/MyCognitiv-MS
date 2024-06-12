@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class BatchModificationRequest implements Serializable{
+public class BatchUpdateRequest implements Serializable{
 	
 	private static final long serialVersionUID = 4506261130161506640L;
 	

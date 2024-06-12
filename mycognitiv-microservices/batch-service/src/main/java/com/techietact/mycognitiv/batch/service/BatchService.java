@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import com.techietact.mycognitiv.batch.model.BatchModel;
-import com.techietact.mycognitiv.batch.request.BatchModificationRequest;
+import com.techietact.mycognitiv.batch.request.BatchUpdateRequest;
 
 public interface BatchService {
 
@@ -30,8 +30,8 @@ public interface BatchService {
 	// @Cacheable(value = "Batches")
 	List<BatchModel> listAllBatches();
 
-	Boolean increaseBatchSize(BatchModificationRequest request);
+	Boolean increaseBatchSize(BatchUpdateRequest request);
 
-	Boolean decreaseBatchSize(BatchModificationRequest request);
+	Boolean decreaseBatchSize(BatchUpdateRequest request);
 
 }

@@ -45,6 +45,8 @@ public class CandidateModel extends AuditableModel {
 	@MobileNumber(groups= {ValidCreation.class,ValidUpdation.class})
 	private long mobileNumber;
 	
+	private long batchId ;
+	
 	// Validation Groups :- 
 	
 	public interface ValidCreation {}

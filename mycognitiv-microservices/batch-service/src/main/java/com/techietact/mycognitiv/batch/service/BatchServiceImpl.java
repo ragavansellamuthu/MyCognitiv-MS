@@ -15,12 +15,14 @@ import com.techietact.mycognitiv.batch.exception.UnsupportedBatchOperationExcept
 import com.techietact.mycognitiv.batch.exception.InvalidPropertyException;
 import com.techietact.mycognitiv.batch.model.BatchModel;
 import com.techietact.mycognitiv.batch.repository.BatchRepository;
-import com.techietact.mycognitiv.batch.request.BatchModificationRequest;
+import com.techietact.mycognitiv.batch.request.BatchUpdateRequest;
 import com.techietact.mycognitiv.batch.util.CustomUtils;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class BatchServiceImpl implements BatchService {
@@ -108,7 +110,8 @@ public class BatchServiceImpl implements BatchService {
 	}
 	
 	@Override
-	public Boolean increaseBatchSize(BatchModificationRequest request) {
+	public Boolean increaseBatchSize(BatchUpdateRequest request) {
+		log.info("Method Invoked : " + request);
 		BatchEntity entity = getBatch(request.getBatchId());
 		if(entity.isVacant()) {
 			int newSize = entity.getCurrentSize() + request.getCount() ;
@@ -123,7 +126,7 @@ public class BatchServiceImpl implements BatchService {
 	}
 
 	@Override
-	public Boolean decreaseBatchSize(BatchModificationRequest request) {
+	public Boolean decreaseBatchSize(BatchUpdateRequest request) {
 		BatchEntity entity = getBatch(request.getBatchId());
 	    int currentSize = entity.getCurrentSize();
 	    int count = request.getCount();
