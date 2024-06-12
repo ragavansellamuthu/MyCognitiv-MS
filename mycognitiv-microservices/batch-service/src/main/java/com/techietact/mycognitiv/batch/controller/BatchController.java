@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techietact.mycognitiv.batch.model.BatchModel;
 import com.techietact.mycognitiv.batch.model.BatchModel.BatchCreation;
 import com.techietact.mycognitiv.batch.model.BatchModel.BatchUpdation;
-import com.techietact.mycognitiv.batch.request.BatchModificationRequest;
+import com.techietact.mycognitiv.batch.request.BatchUpdateRequest;
 import com.techietact.mycognitiv.batch.service.BatchService;
 import com.techietact.mycognitiv.batch.util.CustomUtils;
 
@@ -95,12 +95,12 @@ public class BatchController {
 	}
 	
 	@PatchMapping("/increase-batch-size")
-	public ResponseEntity<Boolean> increaseBatchSize(@RequestBody BatchModificationRequest request) {
+	public ResponseEntity<Boolean> increaseBatchSize(@RequestBody BatchUpdateRequest request) {
 		return ResponseEntity.ok(batchService.increaseBatchSize(request));
 	}
 	
 	@PatchMapping("/decrease-batch-size")
-	public ResponseEntity<Boolean> decreaseBatchSize(@RequestBody BatchModificationRequest request) {
+	public ResponseEntity<Boolean> decreaseBatchSize(@RequestBody BatchUpdateRequest request) {
 		return ResponseEntity.ok(batchService.decreaseBatchSize(request));
 	}
 

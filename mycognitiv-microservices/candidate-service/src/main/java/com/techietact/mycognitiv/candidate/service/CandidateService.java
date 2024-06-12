@@ -2,11 +2,10 @@ package com.techietact.mycognitiv.candidate.service;
 
 import java.util.List;
 
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 
 import com.techietact.mycognitiv.candidate.model.CandidateModel;
+import com.techietact.mycognitiv.candidate.request.BatchCandidateUpdateRequest;
 
 public interface CandidateService {
 	
@@ -28,6 +27,8 @@ public interface CandidateService {
 
 	//@Cacheable(value = "Candidates")
 	List<CandidateModel> listAllCandidates();
+	
+	Boolean updateBatchIdforCandidates(BatchCandidateUpdateRequest request);
 
 		
 }

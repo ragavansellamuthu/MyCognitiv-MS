@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techietact.mycognitiv.candidate.model.CandidateModel;
 import com.techietact.mycognitiv.candidate.model.CandidateModel.ValidCreation;
 import com.techietact.mycognitiv.candidate.model.CandidateModel.ValidUpdation;
+import com.techietact.mycognitiv.candidate.request.BatchCandidateUpdateRequest;
 import com.techietact.mycognitiv.candidate.service.CandidateService;
 import com.techietact.mycognitiv.candidate.util.CustomUtils;
 
@@ -96,6 +98,11 @@ public class CandidateController {
 	@GetMapping("check-duplicate-email/{email}")
 	public ResponseEntity<Boolean> isDuplicateEmail(@Email @PathVariable("email") String email) {
 		return ResponseEntity.ok(candidateService.isDuplicateEmail(email));
+	}
+	
+	@PatchMapping("update-batch-id")
+	public ResponseEntity<Boolean> updateBatchIdforCandidates(@RequestBody BatchCandidateUpdateRequest request) {
+		return ResponseEntity.ok(candidateService.updateBatchIdforCandidates(request));
 	}
 
 }

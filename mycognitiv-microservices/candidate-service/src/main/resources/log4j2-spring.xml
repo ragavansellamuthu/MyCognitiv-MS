@@ -24,7 +24,6 @@
         <Root level="info">
             <AppenderRef ref="console" />
             <AppenderRef ref="splunkhttp" />
-              <AppenderRef ref="File"/>
         </Root>
     </Loggers>
 </Configuration>

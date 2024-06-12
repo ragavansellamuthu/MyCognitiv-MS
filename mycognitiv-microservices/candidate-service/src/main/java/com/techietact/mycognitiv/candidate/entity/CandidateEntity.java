@@ -39,4 +39,6 @@ public class CandidateEntity extends AuditableEntity implements Serializable{
 	@Column(name="mobile_number",nullable=false,length=10)
 	private long mobileNumber;
 
+	@Column(name="batch_id",nullable=false)
+	private long batchId ;
 }
