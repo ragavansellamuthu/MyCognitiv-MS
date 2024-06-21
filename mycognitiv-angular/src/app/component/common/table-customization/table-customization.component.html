@@ -1,4 +1,4 @@
-<h1 mat-dialog-title style="text-align: center;color: darkblue;"> Customize Table</h1>
+<h1 mat-dialog-title class="title"> Customize {{data.tableName}} Table</h1>
 
 <mat-dialog-content>
 
@@ -6,7 +6,7 @@
       <mat-form-field style="width: 100%;">
           <mat-label>Select columns</mat-label>
           <mat-select name="selectedColumns" multiple [(ngModel)]="selectedColumns">
-            <mat-option *ngFor="let column of allColumns" [value]="column"> {{column}} </mat-option>
+            <mat-option *ngFor="let column of allColumns" [value]="column"> {{column | titleCase}} </mat-option>
           </mat-select>
       </mat-form-field>
     </form> 

@@ -92,6 +92,21 @@ public class CandidateServiceImpl implements CandidateService {
 		throw new InvalidPropertyException(
 				"Invalid or Missing  Property : Check validity for Properties : 'candidateId' and 'deletedBy'");
 	}
+	
+	@Override
+	public Boolean undoDeletion(long candidateId) {
+		if (candidateId > 0) {
+			CandidateEntity entity = candidateRepository.findById(candidateId).orElseThrow(()->new EntityNotFoundException("Candidate not found for ID : " + candidateId));
+			entity.setDeleted(false);
+			entity.setDeletedAt(null);
+			entity.setModifiedBy(entity.getDeletedBy());
+			entity.setDeletedBy(0);
+			entity = candidateRepository.save(entity);
+			return !entity.isDeleted();
+		}
+		throw new InvalidPropertyException(
+				"Invalid or Missing  Property : 'candidateId'");
+	}
 
 	@Override
 	public List<CandidateModel> listAllCandidates() {

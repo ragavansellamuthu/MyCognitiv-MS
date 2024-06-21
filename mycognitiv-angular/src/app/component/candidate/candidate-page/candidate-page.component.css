@@ -25,18 +25,33 @@ mat-icon {
   padding: 30px;
   box-sizing: border-box;
   width: 100%;
-  height: calc(100vh - 60px); 
+}
+
+.search-bar-and-buttons-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  width: 100%;
+}
+
+.search-bar {
+  width:25%;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
 }
 
 .table-container{
   width: calc(100% - 60px); 
   box-sizing: border-box; 
   overflow-x: auto; 
-  max-height: 400px;
 }
 
 .spacer{
-  height:100px;
+  height:50px;
 }
 
 .paginator-container{

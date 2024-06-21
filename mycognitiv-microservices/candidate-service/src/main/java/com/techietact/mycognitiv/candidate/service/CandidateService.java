@@ -23,6 +23,8 @@ public interface CandidateService {
 	//@CacheEvict(value = "Candidates", allEntries = true)
 	Boolean deleteCandidate (long candidateId , long deletedBy);
 	
+	Boolean undoDeletion (long candidateId);
+	
 	Page<CandidateModel> paginateCandidates (int pageIndex , int pageSize , String attributeName , String sortOrder , String searchText);
 
 	//@Cacheable(value = "Candidates")
