@@ -78,6 +78,11 @@ public class CandidateController {
 			@PathVariable("deletedBy") long deletedBy) {
 		return ResponseEntity.ok(candidateService.deleteCandidate(candidateId, deletedBy));
 	}
+	
+	@PatchMapping("/undo/{candidateId}")
+	public ResponseEntity<Boolean> undoDeletion(@PathVariable("candidateId") long candidateId) {
+		return ResponseEntity.ok(candidateService.undoDeletion(candidateId));
+	}
 
 	@GetMapping("/list")
 	public ResponseEntity<List<CandidateModel>> getAllCandidates() {
@@ -95,12 +100,12 @@ public class CandidateController {
 				.ok(candidateService.paginateCandidates(pageIndex, pageSize, attributeName, sortOrder, searchText));
 	}
 
-	@GetMapping("check-duplicate-email/{email}")
+	@GetMapping("/check-duplicate-email/{email}")
 	public ResponseEntity<Boolean> isDuplicateEmail(@Email @PathVariable("email") String email) {
 		return ResponseEntity.ok(candidateService.isDuplicateEmail(email));
 	}
 	
-	@PatchMapping("update-batch-id")
+	@PatchMapping("/update-batch-id")
 	public ResponseEntity<Boolean> updateBatchIdforCandidates(@RequestBody BatchCandidateUpdateRequest request) {
 		return ResponseEntity.ok(candidateService.updateBatchIdforCandidates(request));
 	}

@@ -23,10 +23,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 
-import { HighlightDirective } from './directive/highlight.directive';
 
 import { CandidatePageComponent } from './component/candidate/candidate-page/candidate-page.component';
 import { CandidateFormComponent } from './component/candidate/candidate-form/candidate-form.component';
@@ -34,6 +34,8 @@ import { CandidateDetailsComponent } from './component/candidate/candidate-detai
 import { DeleteComponent } from './component/common/delete/delete.component';
 import { TableCustomizationComponent } from './component/common/table-customization/table-customization.component';
 import { FormsModule } from '@angular/forms';
+import { TitleCasePipe } from './pipe/title-case/title-case.pipe';
+import { HighlightDirective } from './directive/highlight/highlight.directive';
 
 
 
@@ -54,6 +56,7 @@ import { FormsModule } from '@angular/forms';
     // Common :
     DeleteComponent,
     TableCustomizationComponent,
+    TitleCasePipe,
 
   ],
   imports: [
@@ -82,9 +85,9 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatProgressBarModule,
     MatCardModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
     
-
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/mycognitiv' }

@@ -20,7 +20,8 @@ export class CandidateService {
   constructor(
     private httpClient:HttpClient,
     private errorService : ErrorService,
-    private dataService : DataService) { 
+    private dataService : DataService,
+    ) { 
     this.API_URL = CANDIDATE_SERVICE_URL;
   }
 
@@ -60,6 +61,15 @@ export class CandidateService {
                .pipe(
                 catchError(this.errorService.handleError)
                );
+  }
+
+  undoDeletion( candidateId : number) : Observable<any> {
+    debugger
+    return this.httpClient
+               .patch(`${this.API_URL}/undo/${candidateId}`,null)
+               .pipe(
+                catchError(this.errorService.handleError)
+               )
   }
 
   getAllCandidates() : Observable<any> {

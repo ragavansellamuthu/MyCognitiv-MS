@@ -1,23 +1,27 @@
-<!-- <div class="search-bar">
-    <mat-form-field appearance="fill" style="width : 30%;">
-        <input matInput placeholder="Search" style="font-size: 25px;" (input)="searchCandidates($event)">
-        <button mat-button matSuffix>
-            <mat-icon>search</mat-icon>
-        </button>
-    </mat-form-field>
-    <button class="customize-table" mat-raised-button color="primary" (click)="customizeTable()">
-        <mat-icon style="color:white">settings</mat-icon> Customize Table
-    </button>
-
-    <button class="add-button" mat-raised-button color="primary" (click)="createCandidate()">
-        <mat-icon style="color:white">person_add</mat-icon> Add Candidate
-    </button>
-
-</div> -->
-
 <div class="main-container">
 
-    <table mat-table class="mat-elevation-z8 table-container" [dataSource]="dataSource" matSort (matSortChange)="sortCandidates($event)">
+    <div class="search-bar-and-buttons-container">
+        <mat-form-field class="search-bar">
+            <mat-label>Search</mat-label>
+            <input matInput (input)="searchCandidates($event)">
+            <button mat-button matSuffix>
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <div class="buttons-container">
+            <button mat-raised-button color="primary" (click)="createCandidate()">
+                <mat-icon style="color:white">person_add</mat-icon> Add Candidate
+            </button>
+            <button mat-raised-button color="accent" (click)="customizeTable()">
+                <mat-icon style="color:white">settings</mat-icon> Customize Table
+            </button>
+        </div>
+
+    </div>
+
+    <table mat-table class="mat-elevation-z8 table-container" [dataSource]="dataSource" matSort
+        (matSortChange)="sortCandidates($event)">
 
         <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef appHighlight>No.</th>
@@ -79,8 +83,8 @@
     </table>
     <div class="spacer"></div>
     <div class="paginator-container">
-        <mat-paginator [pageSizeOptions]="page.pageSizes" [pageIndex]="page.pageIndex" [length]="page.totalCount" showFirstLastButtons (page)="paginateCandidates($event)"></mat-paginator>
+        <mat-paginator [pageSize]="page.pageSize" [hidePageSize]="true" [pageIndex]="page.pageIndex"
+            [length]="page.totalCount" showFirstLastButtons (page)="paginateCandidates($event)"></mat-paginator>
     </div>
 
 </div>
-
