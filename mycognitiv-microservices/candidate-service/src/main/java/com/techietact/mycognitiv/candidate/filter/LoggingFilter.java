@@ -20,7 +20,7 @@ public class LoggingFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		HttpServletRequest httpServletRequest = (HttpServletRequest) request ;
+		var httpServletRequest = (HttpServletRequest) request ;
 		
 		log.info("Request URI : {}" , httpServletRequest.getRequestURI());
 		log.info("Request Method : {}",httpServletRequest.getMethod());

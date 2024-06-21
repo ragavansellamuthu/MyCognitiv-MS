@@ -1,0 +1,24 @@
+<h1 mat-dialog-title style="text-align: center;color: darkblue;"> Customize Table</h1>
+
+<mat-dialog-content>
+
+    <form #tableCustomizationForm="ngForm">
+      <mat-form-field style="width: 100%;">
+          <mat-label>Select columns</mat-label>
+          <mat-select name="selectedColumns" multiple [(ngModel)]="selectedColumns">
+            <mat-option *ngFor="let column of allColumns" [value]="column"> {{column}} </mat-option>
+          </mat-select>
+      </mat-form-field>
+    </form> 
+  
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-buttons">
+  
+    <button mat-raised-button [mat-dialog-close]="selectedColumns" >SUBMIT</button>
+  
+    <button mat-raised-button cdkFocusInitial (click)="dialogRef.close()" color="warn" >CANCEL</button>
+    
+  </mat-dialog-actions>
+  
+

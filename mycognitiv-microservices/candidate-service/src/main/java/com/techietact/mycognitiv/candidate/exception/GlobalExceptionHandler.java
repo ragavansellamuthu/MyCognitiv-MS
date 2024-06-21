@@ -24,7 +24,7 @@ public class GlobalExceptionHandler extends Exception{
 		
 		log.debug(e);
 		
-		int statusCode = 0; 
+		var statusCode = 0; 
 		
 		if( e instanceof IllegalArgumentException || e instanceof MethodArgumentTypeMismatchException || 
 			e instanceof MethodArgumentNotValidException) {
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler extends Exception{
 			statusCode = 500 ; 
 		}
 		
-		ErrorResponse model = new ErrorResponse(statusCode,e.getMessage(),null);
+		var model = new ErrorResponse(statusCode,e.getMessage(),null);
 		
 		log.info(model);	
 		

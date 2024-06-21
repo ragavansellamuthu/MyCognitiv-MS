@@ -1,0 +1,51 @@
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: rgba(24, 22, 22, 0.123);
+  background-color: rgba(36, 33, 33, 0.041);
+  font-weight: 550;
+  color: royalblue;
+}
+
+mat-icon {
+  font-size: 20px;
+  color: royalblue;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100vh - 60px); 
+}
+
+.table-container{
+  width: calc(100% - 60px); 
+  box-sizing: border-box; 
+  overflow-x: auto; 
+  max-height: 400px;
+}
+
+.spacer{
+  height:100px;
+}
+
+.paginator-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; 
+  width: 100%;
+}
+
+
+

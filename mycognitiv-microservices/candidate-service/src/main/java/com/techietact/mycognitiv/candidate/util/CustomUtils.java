@@ -16,6 +16,10 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class CustomUtils {
 	
+	private CustomUtils() {
+		
+	}
+	
 	public static ResponseEntity<?> badRequest(BindingResult result) {
 		Map<String, String> fieldErrors = new HashMap<>();
 		for (FieldError error : result.getFieldErrors()) {
