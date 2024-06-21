@@ -86,7 +86,7 @@ public class CandidateController {
 
 	@GetMapping("/page")
 	public ResponseEntity<Page<CandidateModel>> paginateCandidates(
-			@RequestParam(value = "pageIndex", required = true) int pageIndex,
+			@RequestParam(value = "pageIndex", required = true ) int pageIndex,
 			@RequestParam(value = "pageSize", required = true) int pageSize,
 			@RequestParam(value = "attributeName", required = false) String attributeName,
 			@RequestParam(value = "sortOrder", required = false) String sortOrder,

@@ -1,0 +1,13 @@
+.dialog-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+p{
+    color:rgb(255, 0, 149);
+    font-size: larger;
+}
+
+span {
+    font-weight: 500;
+}

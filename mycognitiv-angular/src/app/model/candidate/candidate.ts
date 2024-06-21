@@ -1,4 +1,6 @@
-export class Candidate {
+import { AuditData } from "../AuditData/audit-data";
+
+export class Candidate extends AuditData{
 
     candidateId !: number ;
     name !: string ;
@@ -7,8 +9,4 @@ export class Candidate {
     age !: number ;
     mobileNumber !: number ;
 
-    createdBy !: number ;
-    modifiedBy !: number ;
-    deletedBy !: number ;
-    
 }

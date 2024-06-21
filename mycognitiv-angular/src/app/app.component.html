@@ -5,7 +5,7 @@
     </button>
 
     <span>MyCognitiv</span>
-
+    
     <span class="example-spacer"></span>
 
     <button mat-icon-button class="example-icon" [mat-menu-trigger-for]="headerMenu">
@@ -14,28 +14,21 @@
 
     <mat-menu #headerMenu="matMenu" xPosition="before">
         <button mat-menu-item> <mat-icon>manage_accounts</mat-icon> My Account</button>
-        <button mat-menu-item> <mat-icon>logout</mat-icon> Exit</button>
+        <button mat-menu-item (click)="exit()"> <mat-icon>logout</mat-icon> Exit</button>
     </mat-menu>
 
 </mat-toolbar>
 
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="drawer-container">
 
-  <mat-drawer #drawer mode="side" >
+  <mat-drawer #drawer mode="side" opened="true">
   
       <mat-nav-list>
 
         <mat-list-item>
-          <button mat-button (click)="drawer.close()">
+          <button mat-button >
             <mat-icon>  engineering  </mat-icon>
             <a mat-list-item routerLink="/candidates">  Candidates  </a>
-          </button>
-        </mat-list-item>
-
-        <mat-list-item>
-          <button mat-button (click)="drawer.close()">
-            <mat-icon>  engineering  </mat-icon>
-            <a mat-list-item routerLink="/chapters">  Chapters  </a>
           </button>
         </mat-list-item>
 
@@ -44,7 +37,9 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <router-outlet></router-outlet>
+    <div class="router-outlet-container">
+      <router-outlet></router-outlet>
+    </div>
   </mat-drawer-content>
 
 </mat-drawer-container>

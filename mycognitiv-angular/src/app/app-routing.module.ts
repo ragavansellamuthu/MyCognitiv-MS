@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CandidatePageComponent } from './components/candidate/candidate-page/candidate-page.component';
-import { ChapterPageComponent } from './components/chapter/chapter-page/chapter-page.component';
+import { CandidatePageComponent } from './component/candidate/candidate-page/candidate-page.component';
 
 const routes: Routes = [
-  {path:'candidates',component:CandidatePageComponent},
-  {path:'chapters',component:ChapterPageComponent}
+  {path:'candidates',component:CandidatePageComponent}
 ];
 
 @NgModule({
