@@ -8,6 +8,10 @@
     
     <span class="example-spacer"></span>
 
+    <button mat-icon-button class="example-icon" (click)="showNotification()" >
+      <mat-icon [matBadge]="noficationCount" matBadgeColor="warn">notifications</mat-icon>
+    </button>
+
     <button mat-icon-button class="example-icon" [mat-menu-trigger-for]="headerMenu">
       <mat-icon>account_circle</mat-icon>
     </button>
@@ -19,6 +23,8 @@
 
 </mat-toolbar>
 
+<mat-progress-bar color="primary" mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
 <mat-drawer-container class="drawer-container">
 
   <mat-drawer #drawer mode="side" opened="true">
@@ -26,7 +32,7 @@
       <mat-nav-list>
 
         <mat-list-item>
-          <button mat-button >
+          <button mat-button (click)="drawer.toggle()" >
             <mat-icon>  engineering  </mat-icon>
             <a mat-list-item routerLink="/candidates">  Candidates  </a>
           </button>

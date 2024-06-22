@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from '../../common/delete/delete.component';
 import { NotificationService } from 'src/app/service/notification/notification.service';
 import { DataService } from 'src/app/service/data/data.service';
+import { CandidateDetailsComponent } from '../candidate-details/candidate-details.component';
+import { LoadingService } from 'src/app/service/loading/loading.service';
 
 @Component({
   selector: 'app-candidate-page',
@@ -25,12 +27,14 @@ export class CandidatePageComponent implements OnInit {
     private candidateService: CandidateService,
     private dialog: MatDialog,
     private notificationService: NotificationService,
-    private dataService : DataService
+    private dataService : DataService,
+    private loadingService : LoadingService
   ) {
     this.page = new Page();
   }
 
   ngOnInit(): void {
+    this.loadingService.start();
     this.getColumns();
     this.getCandidates();
   }
@@ -47,11 +51,16 @@ export class CandidatePageComponent implements OnInit {
       next: (response) => {
         debugger
         if (response) {
-          console.log(response);
           this.dataSource = response.content;
           this.page.totalCount = response.page.totalElements;
           this.page.totalPages = response.page.totalPages;
+          this.loadingService.stop();
         }
+      }, 
+      error : (err) => {
+        this.loadingService.stop();
+        console.error(err);
+        this.notificationService.notify('Error Occurred' , 'OK');
       }
     });
   }
@@ -103,6 +112,14 @@ export class CandidatePageComponent implements OnInit {
 
   viewCandidate(candidateId: number) {
     debugger
+    this.dialog.open(CandidateDetailsComponent,
+      {
+        disableClose : true,
+        data : {
+          candidateId : candidateId
+        }
+      }
+    );
   }
 
   editCandidate(candidateId: number) {

@@ -24,6 +24,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppComponent } from './app.component';
 
@@ -86,7 +87,8 @@ import { HighlightDirective } from './directive/highlight/highlight.directive';
     MatProgressBarModule,
     MatCardModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBadgeModule
     
   ],
   providers: [
