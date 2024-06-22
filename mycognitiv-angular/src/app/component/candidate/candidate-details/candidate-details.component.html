@@ -1,1 +1,42 @@
-<p>candidate-details works!</p>
+<!-- candidate-dialog.component.html -->
+<h1 mat-dialog-title style="text-align: center; color: darkblue;">Candidate Details</h1>
+
+<mat-dialog-content>
+  <div class="candidate-details">
+    <mat-list>
+      <mat-list-item class="candidate-item">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <div class="detail">
+          <span class="label">Name:</span>
+          <span class="value">{{candidate.name}}</span>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="candidate-item">
+        <mat-icon mat-list-icon>email</mat-icon>
+        <div class="detail">
+          <span class="label">Email:</span>
+          <span class="value">{{candidate.email}}</span>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="candidate-item">
+        <mat-icon mat-list-icon>calendar_today</mat-icon>
+        <div class="detail">
+          <span class="label">Age:</span>
+          <span class="value">{{candidate.age}}</span>
+        </div>
+      </mat-list-item>
+      <mat-list-item class="candidate-item">
+        <mat-icon mat-list-icon>phone</mat-icon>
+        <div class="detail">
+          <span class="label">Mobile Number:</span>
+          <span class="value">{{candidate.mobileNumber}}</span>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-buttons">
+  <button mat-raised-button (click)="download()" color="primary">Download</button>
+  <button mat-raised-button cdkFocusInitial (click)="dialogRef.close()" color="warn">Close</button>
+</mat-dialog-actions>
