@@ -26,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppComponent } from './app.component';
 
@@ -54,6 +55,7 @@ import { SubjectPageComponent } from './component/subject/subject-page/subject-p
 import { TopicDetailsComponent } from './component/topic/topic-details/topic-details.component';
 import { TopicFormComponent } from './component/topic/topic-form/topic-form.component';
 import { TopicPageComponent } from './component/topic/topic-page/topic-page.component';
+import { NotificationComponent } from './component/common/notification/notification.component';
 
 
 
@@ -73,6 +75,7 @@ import { TopicPageComponent } from './component/topic/topic-page/topic-page.comp
     DeleteComponent,
     TableCustomizationComponent,
     DashboardComponent,
+    NotificationComponent,
 
     // Candidate :
     CandidatePageComponent,
@@ -102,7 +105,7 @@ import { TopicPageComponent } from './component/topic/topic-page/topic-page.comp
     // Topic : 
     TopicDetailsComponent,
     TopicFormComponent,
-    TopicPageComponent,
+    TopicPageComponent
 
   ],
   imports: [
@@ -134,7 +137,8 @@ import { TopicPageComponent } from './component/topic/topic-page/topic-page.comp
     MatSortModule,
     MatSnackBarModule,
     MatBadgeModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
     
   ],
   providers: [

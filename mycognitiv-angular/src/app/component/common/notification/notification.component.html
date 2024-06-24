@@ -1,0 +1,27 @@
+<h1 mat-dialog-title style="text-align: center;color: darkblue;"> Notifications </h1>
+
+<mat-dialog-content>
+
+  <mat-accordion>
+    <ng-container *ngFor="let notification of notifications">
+      <mat-expansion-panel style="margin-bottom: 10px;" (opened)="markAsRead(notification.notificationId)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{notification.title}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{notification.time  | date:'short'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p style="margin-top: 10px;">{{notification.message}}</p>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-buttons">
+
+  <button class="button-size" mat-raised-button (click)="close()" color="warn">CLOSE</button>
+
+</mat-dialog-actions>
