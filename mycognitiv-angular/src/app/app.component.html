@@ -4,19 +4,19 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <span style="color:white;font-size: 20px;">MyCognitiv</span>
+  <a [routerLink]="'/dashboard'" class="logo">MyCognitiv</a>
 
   <span class="example-spacer"></span>
 
   <button mat-icon-button class="example-icon" (click)="showNotification()">
-    <mat-icon [matBadge]="noficationCount" matBadgeColor="warn">notifications</mat-icon>
+    <mat-icon [matBadge]="notificationCount" matBadgeColor="warn">notifications</mat-icon>
   </button>
 
-  <button mat-icon-button class="example-icon" [mat-menu-trigger-for]="headerMenu">
+  <button mat-icon-button class="example-icon" [mat-menu-trigger-for]="userMenu">
     <mat-icon>account_circle</mat-icon>
   </button>
 
-  <mat-menu #headerMenu="matMenu" xPosition="before">
+  <mat-menu #userMenu="matMenu" xPosition="before">
     <button mat-menu-item> <mat-icon>manage_accounts</mat-icon> My Account</button>
     <button mat-menu-item (click)="exit()"> <mat-icon>logout</mat-icon> Exit</button>
   </mat-menu>

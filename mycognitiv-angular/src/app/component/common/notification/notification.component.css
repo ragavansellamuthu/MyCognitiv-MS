@@ -1,0 +1,8 @@
+.dialog-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+.button-size {
+  width: 100%;
+}

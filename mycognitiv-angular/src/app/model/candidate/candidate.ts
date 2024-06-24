@@ -1,4 +1,4 @@
-import { AuditData } from "../AuditData/audit-data";
+import { AuditData } from "../audit-data/audit-data";
 
 export class Candidate extends AuditData{
 
