@@ -1,39 +1,8 @@
-/* candidate-dialog.component.css */
-.candidate-details {
+.button-container {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  justify-content: center;
 }
 
-.candidate-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #ccc;
-}
-
-.candidate-item .mat-icon {
-  font-size: 24px;
-  color: #3f51b5;
-}
-
-.detail {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.label {
-  font-weight: bold;
-}
-
-.value {
-  margin-left: 5px;
-}
-
-.dialog-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.button-size {
+  width: 100px;
 }

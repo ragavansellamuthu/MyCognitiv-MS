@@ -22,6 +22,7 @@ export class CandidatePageComponent implements OnInit {
   allColumns !: string[];
   selectedColumns !: string[];
   loading !: boolean;
+  title !: string ;
 
   constructor(
     private candidateService: CandidateService,
@@ -31,6 +32,7 @@ export class CandidatePageComponent implements OnInit {
     private loadingService : LoadingService
   ) {
     this.page = new Page();
+    this.title = 'Candidate Management'
   }
 
   ngOnInit(): void {

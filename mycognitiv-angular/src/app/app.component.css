@@ -15,11 +15,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background-color: white;
   }
 
   .router-outlet-container{
     width: 100%;
     height:100%;
+  }
+
+  .background-container {
+    background-image: url('../assets/images/dashboard.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 610px;
   }
 
   .mat-mdc-list-base{
@@ -33,4 +41,21 @@
   mat-progress-bar {
     position: relative; 
     z-index: 1000;
+  }
+
+  .item {
+    margin-left: 16px;
+  }
+
+  .menu-container{
+    background-color: white;
+  }
+
+  span{
+    font-size: 15px;
+  }
+
+  .active {
+    color:royalblue;
+    font-weight: 500;
   }

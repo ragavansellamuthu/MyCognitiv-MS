@@ -5,15 +5,15 @@
             <mat-label>Search</mat-label>
             <input matInput placeholder="Candidate Name" (input)="searchCandidates($event)">
             <button mat-button matSuffix>
-                <mat-icon>search</mat-icon>
+                <mat-icon>person_search</mat-icon>
             </button>
         </mat-form-field>
-
+        <a class="no-underline" [routerLink]="'/candidates'"><h1 class="title">{{title}}</h1></a>
         <div class="buttons-container">
-            <button mat-raised-button color="primary" (click)="createCandidate()">
+            <button class="button-size" mat-raised-button color="primary" (click)="createCandidate()">
                 <mat-icon style="color:white">person_add</mat-icon> Add Candidate
             </button>
-            <button mat-raised-button color="accent" (click)="customizeTable()">
+            <button class="button-size" mat-raised-button color="accent" (click)="customizeTable()">
                 <mat-icon style="color:white">settings</mat-icon> Customize Table
             </button>
         </div>

@@ -1,25 +1,25 @@
 <mat-toolbar color="primary">
 
-    <button mat-icon-button class="example-icon" (click)="drawer.toggle()" >
-      <mat-icon>menu</mat-icon>
-    </button>
+  <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
 
-    <span>MyCognitiv</span>
-    
-    <span class="example-spacer"></span>
+  <span style="color:white;font-size: 20px;">MyCognitiv</span>
 
-    <button mat-icon-button class="example-icon" (click)="showNotification()" >
-      <mat-icon [matBadge]="noficationCount" matBadgeColor="warn">notifications</mat-icon>
-    </button>
+  <span class="example-spacer"></span>
 
-    <button mat-icon-button class="example-icon" [mat-menu-trigger-for]="headerMenu">
-      <mat-icon>account_circle</mat-icon>
-    </button>
+  <button mat-icon-button class="example-icon" (click)="showNotification()">
+    <mat-icon [matBadge]="noficationCount" matBadgeColor="warn">notifications</mat-icon>
+  </button>
 
-    <mat-menu #headerMenu="matMenu" xPosition="before">
-        <button mat-menu-item> <mat-icon>manage_accounts</mat-icon> My Account</button>
-        <button mat-menu-item (click)="exit()"> <mat-icon>logout</mat-icon> Exit</button>
-    </mat-menu>
+  <button mat-icon-button class="example-icon" [mat-menu-trigger-for]="headerMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <mat-menu #headerMenu="matMenu" xPosition="before">
+    <button mat-menu-item> <mat-icon>manage_accounts</mat-icon> My Account</button>
+    <button mat-menu-item (click)="exit()"> <mat-icon>logout</mat-icon> Exit</button>
+  </mat-menu>
 
 </mat-toolbar>
 
@@ -27,23 +27,93 @@
 
 <mat-drawer-container class="drawer-container">
 
-  <mat-drawer #drawer mode="side" opened="true">
-  
-      <mat-nav-list>
+  <mat-drawer #drawer mode="side" opened="true" class="menu-container">
 
-        <mat-list-item>
-          <button mat-button (click)="drawer.toggle()" >
-            <mat-icon>  engineering  </mat-icon>
-            <a mat-list-item routerLink="/candidates">  Candidates  </a>
-          </button>
-        </mat-list-item>
+    <mat-nav-list>
 
-      </mat-nav-list>
-    
+      <mat-list-item>
+        <button mat-button (click)="onItemSelected('dashboard')">
+          <mat-icon color="primary"> dashboard </mat-icon>
+          <a mat-list-item [routerLink]="'/dashboard'">
+            <span [ngClass]="{ 'active': selectedItem === 'dashboard' }" > Dashboard </span>
+          </a>
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-button (click)="onItemSelected('subjects')">
+          <mat-icon color="primary"> book </mat-icon>
+          <a mat-list-item [routerLink]="'/subjects'">
+            <span [ngClass]="{ 'active': selectedItem === 'subjects' }" > Subject </span>
+          </a>
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-button (click)="onItemSelected('chapters')">
+          <mat-icon color="primary"> menu_book </mat-icon>
+          <a mat-list-item [routerLink]="'/chapters'">
+            <span [ngClass]="{ 'active': selectedItem === 'chapters' }" > Chapter </span>
+          </a>
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-button (click)="onItemSelected('topics')">
+          <mat-icon color="primary"> lightbulb </mat-icon>
+          <a mat-list-item [routerLink]="'/topics'">
+            <span [ngClass]="{ 'active': selectedItem === 'topics' }" > Topic </span> 
+          </a>
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-button (click)="onItemSelected('candidates')">
+          <mat-icon color="primary"> person </mat-icon>
+          <a mat-list-item [routerLink]="'/candidates'">
+            <span [ngClass]="{ 'active': selectedItem === 'candidates' }" > Candidate </span>
+          </a>
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-button (click)="onItemSelected('batches')">
+          <mat-icon color="primary"> groups </mat-icon>
+          <a mat-list-item [routerLink]="'/batches'">
+            <span [ngClass]="{ 'active': selectedItem === 'batches' }" > Batch </span>
+          </a>
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-button (click)="onItemSelected('professors')">
+          <mat-icon color="primary"> escalator_warning </mat-icon>
+          <a mat-list-item [routerLink]="'/professors'">
+            <span [ngClass]="{ 'active': selectedItem === 'professors' }"> Professor </span>
+          </a>
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+    </mat-nav-list>
+
   </mat-drawer>
 
   <mat-drawer-content>
-    <div class="router-outlet-container">
+    <div class="router-outlet-container background-container">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>

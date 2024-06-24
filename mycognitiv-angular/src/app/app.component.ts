@@ -11,6 +11,7 @@ export class AppComponent {
 
   noficationCount : number = 11 ; // Testing purpose
   isLoading !: boolean ;
+  selectedItem : string = 'dashboard';
 
   constructor (
     private loadingService : LoadingService
@@ -29,6 +30,11 @@ export class AppComponent {
   showNotification(){
     debugger
     this.isLoading = !this.isLoading; // Testing purpose
+  }
+
+  onItemSelected( item : string ){
+    debugger
+    this.selectedItem = item ;
   }
 
 }
