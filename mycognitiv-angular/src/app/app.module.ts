@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 
@@ -37,6 +38,22 @@ import { TableCustomizationComponent } from './component/common/table-customizat
 import { FormsModule } from '@angular/forms';
 import { TitleCasePipe } from './pipe/title-case/title-case.pipe';
 import { HighlightDirective } from './directive/highlight/highlight.directive';
+import { BatchDetailsComponent } from './component/batch/batch-details/batch-details.component';
+import { BatchFormComponent } from './component/batch/batch-form/batch-form.component';
+import { BatchPageComponent } from './component/batch/batch-page/batch-page.component';
+import { ProfessorPageComponent } from './component/professor/professor-page/professor-page.component';
+import { ProfessorDetailsComponent } from './component/professor/professor-details/professor-details.component';
+import { ProfessorFormComponent } from './component/professor/professor-form/professor-form.component';
+import { DashboardComponent } from './component/common/dashboard/dashboard.component';
+import { ChapterFormComponent } from './component/chapter/chapter-form/chapter-form.component';
+import { ChapterDetailsComponent } from './component/chapter/chapter-details/chapter-details.component';
+import { ChapterPageComponent } from './component/chapter/chapter-page/chapter-page.component';
+import { SubjectDetailsComponent } from './component/subject/subject-details/subject-details.component';
+import { SubjectFormComponent } from './component/subject/subject-form/subject-form.component';
+import { SubjectPageComponent } from './component/subject/subject-page/subject-page.component';
+import { TopicDetailsComponent } from './component/topic/topic-details/topic-details.component';
+import { TopicFormComponent } from './component/topic/topic-form/topic-form.component';
+import { TopicPageComponent } from './component/topic/topic-page/topic-page.component';
 
 
 
@@ -49,15 +66,43 @@ import { HighlightDirective } from './directive/highlight/highlight.directive';
     // Directice :
     HighlightDirective,
 
+    // Pipe : 
+    TitleCasePipe,
+
+    // Common :
+    DeleteComponent,
+    TableCustomizationComponent,
+    DashboardComponent,
+
     // Candidate :
     CandidatePageComponent,
     CandidateFormComponent,
     CandidateDetailsComponent,
     
-    // Common :
-    DeleteComponent,
-    TableCustomizationComponent,
-    TitleCasePipe,
+    // Batch :  
+    BatchDetailsComponent,
+    BatchFormComponent,
+    BatchPageComponent,
+
+    // Professor :
+    ProfessorPageComponent,
+    ProfessorDetailsComponent,
+    ProfessorFormComponent,
+
+    // Chapter : 
+    ChapterFormComponent,
+    ChapterDetailsComponent,
+    ChapterPageComponent,
+
+    // Subject : 
+    SubjectDetailsComponent,
+    SubjectFormComponent,
+    SubjectPageComponent,
+
+    // Topic : 
+    TopicDetailsComponent,
+    TopicFormComponent,
+    TopicPageComponent,
 
   ],
   imports: [
@@ -88,7 +133,8 @@ import { HighlightDirective } from './directive/highlight/highlight.directive';
     MatCardModule,
     MatSortModule,
     MatSnackBarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDividerModule
     
   ],
   providers: [
